@@ -100,20 +100,25 @@ function appendSearchBar() {
 /*
  * Takes the input from the user and displays any of the 
  * names that any similar combination of letters in the name
+ * also changes the paginator to reflect the amount of results
  * https://www.w3schools.com/howto/howto_js_filter_lists.asp was used for help
  */
 function searchItem(list, searchValue) {
   let h3, txtValue, filter;
+  let searchResults = [];
   filter = searchValue.toUpperCase();
   for (let i = 0; i < list.length; i++) {
     h3 = list[i].getElementsByTagName('h3')[0];
     txtValue = h3.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      list[i].style.display = '';
+      searchResults.push(list[i]);
+      showPage(searchResults, 1);
     } else {
       list[i].style.display = 'none';
     }
   }
+  document.querySelector('.pagination').remove();
+  appendPageLinks(searchResults);
 }
 
 
