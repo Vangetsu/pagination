@@ -2,9 +2,6 @@
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-   
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
 
 /*** 
    Global variables that store the DOM elements 
@@ -79,3 +76,19 @@ function appendPageLinks(list) {
 }
 
 appendPageLinks(listItems);
+
+function appendSearchBar() {
+  const header = document.querySelector('.page-header');
+  const searchDiv = document.createElement('form');
+  searchDiv.innerHTML = `<input placeholder="Search for students..."><button>Search</button>`;
+  searchDiv.className = 'student-search';
+  header.appendChild(searchDiv);
+
+  searchDiv.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(e.target[0].value);
+    e.target[0].value = '';
+  });
+}
+
+appendSearchBar();
