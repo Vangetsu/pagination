@@ -38,8 +38,57 @@ showPage(listItems, 1);
    functionality to the pagination buttons.
 ***/
 
+/* 
+<div class="pagination">
+        <ul>
+          <li>
+            <a class="active" href="#">1</a>
+          </li>
+           <li>
+            <a href="#">2</a>
+          </li>
+           <li>
+            <a href="#">3</a>
+          </li>
+           <li>
+            <a href="#">4</a>
+          </li>
+           <li>
+            <a href="#">5</a>
+          </li>
+        </ul>
+      </div>
+*/
 
+function appendPageLinks(list) {
+  let numOfPages = list.length / itemsPerPage;
+  let page = document.querySelector('.page');
+  let div = document.createElement('div');
+  let pageLinks = `<div class="pagination">
+  <ul>`;
 
+  for (let i = 0; i < numOfPages; i++) {
+    if (i === 0) {
+      pageLinks += `
+    <li>
+      <a class="active" href="#">${i + 1}</a>
+    </li>`
+    } else {
+      pageLinks += `
+    <li>
+      <a href="#">${i + 1}</a>
+    </li>`
+    }
+  }
+
+  pageLinks += `
+  </ul>
+</div>`
+  div.innerHTML = pageLinks;
+  page.appendChild(div);
+}
+
+appendPageLinks(listItems);
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
