@@ -34,38 +34,14 @@ showPage(listItems, 1);
 
 
 /*** 
-   Create the `appendPageLinks function` to generate, append, and add 
+   Creates the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
 ***/
-
-/* 
-<div class="pagination">
-        <ul>
-          <li>
-            <a class="active" href="#">1</a>
-          </li>
-           <li>
-            <a href="#">2</a>
-          </li>
-           <li>
-            <a href="#">3</a>
-          </li>
-           <li>
-            <a href="#">4</a>
-          </li>
-           <li>
-            <a href="#">5</a>
-          </li>
-        </ul>
-      </div>
-*/
-
 function appendPageLinks(list) {
   let numOfPages = list.length / itemsPerPage;
   let page = document.querySelector('.page');
   let div = document.createElement('div');
-  let pageLinks = `<div class="pagination">
-  <ul>`;
+  let pageLinks = `<ul>`;
 
   for (let i = 0; i < numOfPages; i++) {
     if (i === 0) {
@@ -82,10 +58,19 @@ function appendPageLinks(list) {
   }
 
   pageLinks += `
-  </ul>
-</div>`
+  </ul>`
   div.innerHTML = pageLinks;
+  div.className = 'pagination';
   page.appendChild(div);
+
+  let links = div.querySelectorAll('a');
+  for (let i = 0; i < links.length; i++) {
+    (function () {
+      links[i].addEventListener('click', (e) => {
+        console.log('click page: ', i + 1);
+      },false)
+    })();
+  }
 }
 
 appendPageLinks(listItems);
