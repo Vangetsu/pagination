@@ -42,6 +42,7 @@ function appendPageLinks(list) {
   let div = document.createElement('div');
   let pageLinks = `<ul>`;
 
+  // loops through the number of pages and adds a link 
   for (let i = 0; i < numOfPages; i++) {
     if (i === 0) {
       pageLinks += `
@@ -55,13 +56,14 @@ function appendPageLinks(list) {
     </li>`
     }
   }
-
   pageLinks += `
-  </ul>`
+  </ul>`;
+  // adds links to the div and appends it to the page
   div.innerHTML = pageLinks;
   div.className = 'pagination';
   page.appendChild(div);
 
+  // Gives the links a click event listener and opens the coresponding page
   let links = div.querySelectorAll('a');
   for (let i = 0; i < links.length; i++) {
     (function () {
@@ -77,6 +79,3 @@ function appendPageLinks(list) {
 }
 
 appendPageLinks(listItems);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
