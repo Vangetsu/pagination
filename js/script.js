@@ -32,7 +32,6 @@ function showPage(list, page) {
 
 showPage(listItems, 1);
 
-
 /*** 
    Creates the `appendPageLinks function` to generate, append, and add 
    functionality to the pagination buttons.
@@ -67,7 +66,11 @@ function appendPageLinks(list) {
   for (let i = 0; i < links.length; i++) {
     (function () {
       links[i].addEventListener('click', (e) => {
-        console.log('click page: ', i + 1);
+        for (let j = 0; j < links.length; j++) {
+          links[j].className = '';
+        }
+        e.target.className = 'active';
+        showPage(listItems, e.target.textContent);
       },false)
     })();
   }
