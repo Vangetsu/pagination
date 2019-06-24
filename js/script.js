@@ -104,8 +104,14 @@ function appendSearchBar() {
  * https://www.w3schools.com/howto/howto_js_filter_lists.asp was used for help
  */
 function searchItem(list, searchValue) {
-  let h3, txtValue, filter;
+  let h3, txtValue, filter, page, div, alert;
   let searchResults = [];
+  page = document.querySelector('.page');
+  div = document.createElement('div');
+  div.className = 'alert';
+  alert = document.createElement('h1');
+  alert.textContent = 'No results matched your search';
+  div.appendChild(alert);
   filter = searchValue.toUpperCase();
   for (let i = 0; i < list.length; i++) {
     h3 = list[i].getElementsByTagName('h3')[0];
@@ -117,8 +123,18 @@ function searchItem(list, searchValue) {
       list[i].style.display = 'none';
     }
   }
+
+  // checks if there are 0 results and displays message if true
+  if (searchResults.length < 1 || searchResults === undefined) {
+    page.appendChild(div);
+  } else if (page.children[2].className === 'alert') {
+      page.children[2].remove();
+  }
+  
+
   document.querySelector('.pagination').remove();
   appendPageLinks(searchResults);
+
 }
 
 
