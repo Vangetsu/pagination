@@ -77,6 +77,11 @@ function appendPageLinks(list) {
 
 appendPageLinks(listItems);
 
+/*
+ * Creates a search bar, appends it to the top of the page,
+ * then listens for any submit events by the user and 
+ * calls the `searchItem` function
+ */
 function appendSearchBar() {
   const header = document.querySelector('.page-header');
   const searchDiv = document.createElement('form');
@@ -86,9 +91,30 @@ function appendSearchBar() {
 
   searchDiv.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(e.target[0].value);
+    let searchValue = e.target[0].value;
+    searchItem(listItems, searchValue);
     e.target[0].value = '';
   });
 }
+
+/*
+ * Takes the input from the user and displays any of the 
+ * names that any similar combination of letters in the name
+ * https://www.w3schools.com/howto/howto_js_filter_lists.asp was used for help
+ */
+function searchItem(list, searchValue) {
+  let h3, txtValue, filter;
+  filter = searchValue.toUpperCase();
+  for (let i = 0; i < list.length; i++) {
+    h3 = list[i].getElementsByTagName('h3')[0];
+    txtValue = h3.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      list[i].style.display = '';
+    } else {
+      list[i].style.display = 'none';
+    }
+  }
+}
+
 
 appendSearchBar();
