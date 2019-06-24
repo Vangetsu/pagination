@@ -126,7 +126,9 @@ function searchItem(list, searchValue) {
 
   // checks if there are 0 results and displays message if true
   if (searchResults.length < 1 || searchResults === undefined) {
-    page.appendChild(div);
+    if (page.children[2].className !== 'alert') {
+      page.appendChild(div);
+    }
   } else if (page.children[2].className === 'alert') {
       page.children[2].remove();
   }
