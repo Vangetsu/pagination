@@ -107,15 +107,10 @@ function searchItem(list, searchValue) {
   let h3, txtValue, filter, page, div, alert;
   let searchResults = [];
   page = document.querySelector('.page');
-  div = document.createElement('div');
-  div.className = 'alert';
-  alert = document.createElement('h1');
-  alert.textContent = 'No results matched your search';
-  div.appendChild(alert);
   filter = searchValue.toUpperCase();
   for (let i = 0; i < list.length; i++) {
     h3 = list[i].getElementsByTagName('h3')[0];
-    txtValue = h3.textContent || a.innerText;
+    txtValue = h3.textContent || h3.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       searchResults.push(list[i]);
       showPage(searchResults, 1);
@@ -127,6 +122,11 @@ function searchItem(list, searchValue) {
   // checks if there are 0 results and displays message if true
   if (searchResults.length < 1 || searchResults === undefined) {
     if (page.children[2].className !== 'alert') {
+      div = document.createElement('div');
+      div.className = 'alert';
+      alert = document.createElement('h1');
+      alert.textContent = 'No results matched your search';
+      div.appendChild(alert);
       page.appendChild(div);
     }
   } else if (page.children[2].className === 'alert') {
