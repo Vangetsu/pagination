@@ -113,11 +113,11 @@ function searchItem(list, searchValue) {
     txtValue = h3.textContent || h3.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       searchResults.push(list[i]);
-      showPage(searchResults, 1);
     } else {
       list[i].style.display = 'none';
     }
   }
+  showPage(searchResults, 1);
 
   // checks if there are 0 results and displays message if true
   if (searchResults.length < 1 || searchResults === undefined) {
