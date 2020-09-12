@@ -1,3 +1,2 @@
-# List pagination and filtering
-
-Second project for the Treehouse Full-Stack JavaScript Techdegree. Single-paged app that displays a list of users that are hard coded into the HTML. It then uses JavaScript to display ten users at a time a paginates it. When the links at the bottom are clicked the corresponding page is displayed. Also alows the user to filter through names with a search bar. [View the live demo]( https://jasonrhowie.com/list-pagination-and-filtering/).
+# pagination
+ Pagination Training Project
